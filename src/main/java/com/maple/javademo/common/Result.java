@@ -10,6 +10,11 @@ public class Result {
     private String msg;
     private Object model;
 
+    public Result(int code, String msg, Object model) {
+        this.code = code;
+        this.msg = msg;
+        this.model = model;
+    }
 
     public int getCode() {
         return code;
