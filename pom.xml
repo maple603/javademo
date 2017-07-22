@@ -54,6 +54,18 @@
 			<version>1.2.22</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.4.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>6.0.6</version>
+		</dependency>
+
 		<!--阿里 Druid Spring Boot Starter依赖-->
 		<dependency>
 			<groupId>com.alibaba</groupId>
