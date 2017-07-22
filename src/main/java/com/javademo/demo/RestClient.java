@@ -15,6 +15,7 @@ public class RestClient {
     @Autowired
     private RestTemplate template;
 
+
     private static final String GITHUB_URL = "https://github.com/trending?l=java&since=weekly";
 
     public   String getContent(){
