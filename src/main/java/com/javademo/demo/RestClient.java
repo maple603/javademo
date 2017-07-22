@@ -2,16 +2,18 @@ package com.javademo.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+import javax.annotation.Resource;
 
 /**
  * @author maple
  * @name 金色木叶枫
  * Created time on 2017/7/22 下午9:40.
  */
-
-@RestController
+@Service
 public class RestClient {
 
     @Autowired

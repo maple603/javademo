@@ -11,15 +11,6 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 public class JavademoApplication {
 
-
-	@Autowired
-	private RestTemplateBuilder builder;
-
-	public RestTemplate restTemplate(){
-		return builder.build();
-	}
-
-
 	public static void main(String[] args) {
 		SpringApplication.run(JavademoApplication.class, args);
 	}
