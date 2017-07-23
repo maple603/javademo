@@ -1,4 +1,4 @@
-package com.javademo.start.common;
+package com.javademo.common;
 
 /**
  * @author maple

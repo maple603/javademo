@@ -37,5 +37,6 @@ public class RestClientTest {
         String content = restClient.getWeather();
         System.out.println(content);
 
+
     }
 }
