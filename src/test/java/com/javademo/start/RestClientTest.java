@@ -16,9 +16,8 @@ import org.springframework.test.context.junit4.SpringRunner;
  * Created time on 2017/7/22 下午9:57.
  */
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringRunner.class)
 @SpringBootTest
-@ContextConfiguration(classes=RestClient.class)
 public class RestClientTest {
 
     @Autowired
