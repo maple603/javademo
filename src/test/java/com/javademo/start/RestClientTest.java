@@ -1,6 +1,7 @@
 package com.javademo.start;
 
 import com.javademo.demo.RestClient;
+import com.javademo.demo.RestCustomer;
 import com.javademo.demo.Weather;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,6 +23,9 @@ public class RestClientTest {
     @Autowired
     private RestClient restClient;
 
+    @Autowired
+    private RestCustomer restCustomer;
+
     @Test
     public void getData(){
 
@@ -39,4 +43,7 @@ public class RestClientTest {
 
 
     }
+
+
+
 }
