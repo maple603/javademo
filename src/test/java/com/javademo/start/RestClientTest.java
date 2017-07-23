@@ -1,6 +1,7 @@
 package com.javademo.start;
 
 import com.javademo.demo.RestClient;
+import com.javademo.demo.Weather;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,14 @@ public class RestClientTest {
 
         String content = restClient.getContent();
 
+        System.out.println(content);
+
+    }
+
+
+    @Test
+    public  void getWeatherTest(){
+        String content = restClient.getWeather();
         System.out.println(content);
 
     }
