@@ -1,6 +1,7 @@
 package com.javademo.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -12,14 +13,18 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class RestClient {
 
-    @Autowired
-    private RestTemplate template;
 
+    private final RestTemplate template;
+
+    @Autowired
+    public RestClient(RestTemplateBuilder restTemplateBuilder) {
+        this.template = restTemplateBuilder.build();
+    }
 
     private static final String GITHUB_URL = "https://github.com/trending?l=java&since=weekly";
 
     public   String getContent(){
-        return template.getForObject(GITHUB_URL, String.class,new String[]{});
+        return this.template.getForObject(GITHUB_URL, String.class,new String[]{});
 
     }
 
