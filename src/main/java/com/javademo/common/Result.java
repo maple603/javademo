@@ -5,6 +5,7 @@ package com.javademo.common;
  * @name 金色木叶枫
  * Created time on 2017/7/4 下午11:21.
  */
+
 public class Result {
     private int code;
     private String msg;

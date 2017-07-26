@@ -6,6 +6,8 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.Resource;
+
 /**
  * @author maple
  * @name 金色木叶枫
@@ -15,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 public class RestClient {
 
 
-    private final RestTemplate template;
+    private  RestTemplate template;
 
     @Autowired
     public RestClient(RestTemplateBuilder restTemplateBuilder) {
@@ -33,5 +35,6 @@ public class RestClient {
     public String getWeather(){
         return this.template.getForObject(WEATHER_URL,String.class,new String[]{});
     }
+
 
 }
