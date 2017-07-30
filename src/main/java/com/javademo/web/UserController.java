@@ -11,7 +11,7 @@ import java.util.*;
  * @since Created time on 2017/7/30 下午1:58.
  */
 @RestController
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/users")
 public class UserController {
 
     static Map<Long, User> users = Collections.synchronizedMap(new HashMap<Long, User>());
