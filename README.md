@@ -142,3 +142,88 @@ public class Swagger2 {
 
 
 ```
+如上代码所示，通过@Configuration注解，让Spring来加载该类配置。再通过@EnableSwagger2注解来启用Swagger2。
+
+再通过createRestApi函数创建Docket的Bean之后，apiInfo()用来创建该Api的基本信息（这些基本信息会展现在文档页面中）。select()函数返回一个ApiSelectorBuilder实例用来控制哪些接口暴露给Swagger来展现，本例采用指定扫描的包路径来定义，Swagger会扫描该包下所有Controller定义的API，并产生文档内容（除了被@ApiIgnore指定的请求）。
+
+###添加文档内容
+
+在完成了上述配置后，其实已经可以生产文档内容，但是这样的文档主要针对请求本身，而描述主要来源于函数等命名产生，对用户并不友好，我们通常需要自己增加一些说明来丰富文档内容。如下所示，我们通过@ApiOperation注解来给API增加说明、通过@ApiImplicitParams、@ApiImplicitParam注解来给参数增加说明。
+
+代码展示如下：
+```java
+package com.javademo.web;
+
+import com.javademo.domain.User;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.*;
+
+/**
+ * @author maple
+ * @name 金色木叶枫
+ * @since Created time on 2017/7/30 下午1:58.
+ */
+@RestController
+@RequestMapping(value = "/users")
+public class UserController {
+
+    static Map<Long, User> users = Collections.synchronizedMap(new HashMap<Long, User>());
+
+    @ApiOperation(value="获取用户列表", notes="")
+    @RequestMapping(value = "/",method= RequestMethod.GET)
+    public List<User> getUserList(){
+        List<User> list = new ArrayList<User>(users.values());
+        return list;
+    }
+
+    @ApiOperation(value="创建用户", notes="根据User对象创建用户")
+    @ApiImplicitParam(name = "user", value = "用户详细实体user", required = true, dataType = "User")
+    @RequestMapping(value="/", method=RequestMethod.POST)
+    public String postUser(@ModelAttribute User user) {
+        // 处理"/users/"的POST请求，用来创建User
+        // 除了@ModelAttribute绑定参数之外，还可以通过@RequestParam从页面中传递参数
+        users.put(user.getId(), user);
+        return "success";
+    }
+
+    @ApiOperation(value="获取用户详细信息", notes="根据url的id来获取用户详细信息")
+    @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Long")
+    @RequestMapping(value="/{id}", method=RequestMethod.GET)
+    public User getUser(@PathVariable Long id) {
+        // 处理"/users/{id}"的GET请求，用来获取url中id值的User信息
+        // url中的id可通过@PathVariable绑定到函数的参数中
+        return users.get(id);
+    }
+
+    @ApiOperation(value="更新用户详细信息", notes="根据url的id来指定更新对象，并根据传过来的user信息来更新用户详细信息")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Long"),
+            @ApiImplicitParam(name = "user", value = "用户详细实体user", required = true, dataType = "User")
+    })
+    @RequestMapping(value="/{id}", method=RequestMethod.PUT)
+    public String putUser(@PathVariable Long id, @ModelAttribute User user) {
+        // 处理"/users/{id}"的PUT请求，用来更新User信息
+        User u = users.get(id);
+        u.setName(user.getName());
+        u.setAge(user.getAge());
+        users.put(id, u);
+        return "success";
+    }
+
+    @ApiOperation(value="删除用户", notes="根据url的id来指定删除对象")
+    @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Long")
+    @RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+    public String deleteUser(@PathVariable Long id) {
+        // 处理"/users/{id}"的DELETE请求，用来删除User
+        users.remove(id);
+        return "success";
+    }
+
+}
+```
+完成上述代码添加上，启动Spring Boot程序，访问：http://localhost:8080/swagger-ui.html
+。

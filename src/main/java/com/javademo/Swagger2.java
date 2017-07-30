@@ -28,6 +28,7 @@ public class Swagger2 {
                 .paths(PathSelectors.any())
                 .build();
     }
+    
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Spring Boot中使用Swagger2构建RESTful APIs")
