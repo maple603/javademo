@@ -13,23 +13,22 @@
 1.首先需要在pom.xml文件中引入web模块
 ```xml
 <dependencies>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-		</dependency>
 	
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        
+	<dependency>
+        <groupId>org.springframework.boot</groupId>
+    	<artifactId>spring-boot-starter</artifactId>
+    </dependency>
+    	
+    <dependency>
+    	<groupId>org.springframework.boot</groupId>
+    	<artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+    </dependency>    
 </dependencies>
 
 ```
