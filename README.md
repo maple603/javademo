@@ -42,7 +42,7 @@
 ```
 
 2.创建一个controller 内容如下
-本demo中我们选择使用REST
+本demo中我们选择使用RESTful Service
 ```java
 package com.javademo.web;
 
