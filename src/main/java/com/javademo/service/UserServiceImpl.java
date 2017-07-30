@@ -3,6 +3,7 @@ package com.javademo.service;
 import com.javademo.domain.User;
 import com.javademo.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
     @Autowired
+    @Qualifier("masterJdbcTemplate")
     private JdbcTemplate jdbcTemplate;
 
     @Autowired

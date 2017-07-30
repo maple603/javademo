@@ -32,12 +32,12 @@ public class JdbcTemplateTest {
     @Test
     public void test() throws Exception {
         // 往第一个数据源中插入两条数据
-        jdbcTemplate1.update("insert into user(id,name,age) values(?, ?, ?)", 1, "hello", 20);
+        jdbcTemplate1.update("insert into user(name,age) values(?, ?)", "hello", 20);
         // 往第二个数据源中插入一条数据，若插入的是第一个数据源，则会主键冲突报错
-        jdbcTemplate2.update("insert into user(id,name,age) values(?, ?, ?)", 1, "sushou", 20);
-        // 查一下第一个数据源中是否有两条数据，验证插入是否成功
-        Assert.assertEquals("2", jdbcTemplate1.queryForObject("select count(1) from user", String.class));
-        // 查一下第一个数据源中是否有两条数据，验证插入是否成功
+        jdbcTemplate2.update("insert into user(name,age) values(?, ?)", "sushou", 20);
+        // 查一下第一个数据源中是否有1条数据，验证插入是否成功
+        Assert.assertEquals("1", jdbcTemplate1.queryForObject("select count(1) from user", String.class));
+        // 查一下第一个数据源中是否有1条数据，验证插入是否成功
         Assert.assertEquals("1", jdbcTemplate2.queryForObject("select count(1) from user", String.class));
     }
 }
