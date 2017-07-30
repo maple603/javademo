@@ -73,7 +73,7 @@ public class HomeController {
 而我们构建RESTful API的目的通都是由于多终端的原因，这些终端会共用很多底层业务逻辑，因此我们会抽象出这样一层来同时服务于多个移动端或者Web前端。
 为了方便调试和测试，在项目中添加Swagger2依赖 
 
-###添加Swagger2依赖
+### 添加Swagger2依赖
 
 在pom.xml中加入Swagger2的依赖
 
