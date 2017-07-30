@@ -228,6 +228,7 @@ public class UserController {
 完成上述代码添加上，启动Spring Boot程序，访问：http://localhost:8080/swagger-ui.html
 。
 
+
 ### Demo3 Spring Boot 与 JdbcTemplate
 
 本文介绍在Spring Boot基础下配置数据源和通过JdbcTemplate编写数据访问的示例。
@@ -394,3 +395,5 @@ public class JdbcTest {
 }
 
 ```
+
+上面介绍的JdbcTemplate只是最基本的几个操作，更多其他数据访问操作的使用请参考：JdbcTemplate API[http://https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/jdbc/core/JdbcTemplate.html]
