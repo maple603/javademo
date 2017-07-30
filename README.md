@@ -68,7 +68,7 @@ public class HomeController {
 
 3.启动主程序，打开浏览器访问http://localhost:8080/hello，可以看到页面输出Hello Spring Boot!!!
 
-### Demo 2
+### Demo 2 Spring Boot 与 Swagger2完美结合
 由于Spring Boot能够快速开发、便捷部署等特性，相信有很大一部分Spring Boot的用户会用来构建RESTful API。
 而我们构建RESTful API的目的通都是由于多终端的原因，这些终端会共用很多底层业务逻辑，因此我们会抽象出这样一层来同时服务于多个移动端或者Web前端。
 为了方便调试和测试，在项目中添加Swagger2依赖 
