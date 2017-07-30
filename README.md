@@ -396,4 +396,4 @@ public class JdbcTest {
 
 ```
 
-上面介绍的JdbcTemplate只是最基本的几个操作，更多其他数据访问操作的使用请参考：[JdbcTemplate API](http://https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/jdbc/core/JdbcTemplate.html)
+以上JdbcTemplate只是最基本的几个操作，更多其他数据访问操作的使用请参考：[JdbcTemplate API](http://https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/jdbc/core/JdbcTemplate.html)
