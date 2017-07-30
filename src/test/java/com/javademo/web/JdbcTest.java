@@ -1,6 +1,6 @@
 package com.javademo.web;
 
-import com.javademo.domain.UserService;
+import com.javademo.service.UserService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

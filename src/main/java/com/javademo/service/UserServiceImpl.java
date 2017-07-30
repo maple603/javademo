@@ -1,7 +1,6 @@
 package com.javademo.service;
 
 import com.javademo.domain.User;
-import com.javademo.domain.UserService;
 import com.javademo.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

@@ -313,7 +313,7 @@ public interface UserService {
 ```java
 package com.javademo.service;
 
-import com.javademo.domain.UserService;
+import com.javademo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -361,7 +361,7 @@ public class UserServiceImpl implements UserService {
 
 package com.javademo.web;
 
-import com.javademo.domain.UserService;
+import com.javademo.service.UserService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

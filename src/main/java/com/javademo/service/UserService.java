@@ -1,5 +1,7 @@
-package com.javademo.domain;
+package com.javademo.service;
 
+
+import com.javademo.domain.User;
 
 /**
  * @author maple
