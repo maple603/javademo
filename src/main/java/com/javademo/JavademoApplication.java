@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 //@ComponentScan(basePackages = {"com.javademo.*"})
 @SpringBootApplication
-//@EnableAutoConfiguration
+@EnableAutoConfiguration
 public class JavademoApplication {
 
 	public static void main(String[] args) {

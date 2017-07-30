@@ -1,5 +1,6 @@
 package com.javademo.domain;
 
+
 /**
  * @author maple
  * @name 金色木叶枫
@@ -26,5 +27,13 @@ public interface UserService {
      * 删除所有用户
      */
     void deleteAllUsers();
+
+
+    /**
+     * 获取用户信息
+     * @param id
+     * @return
+     */
+    User findOne(int id);
 
 }

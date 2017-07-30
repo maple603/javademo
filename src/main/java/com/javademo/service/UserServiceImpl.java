@@ -1,6 +1,8 @@
 package com.javademo.service;
 
+import com.javademo.domain.User;
 import com.javademo.domain.UserService;
+import com.javademo.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    private UserMapper userMapper;
 
     @Override
     public void create(String name, Integer age) {
@@ -37,5 +42,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteAllUsers() {
         jdbcTemplate.update("delete from USER");
+    }
+
+    @Override
+    public User findOne(int id) {
+        return userMapper.findOne(id);
     }
 }
