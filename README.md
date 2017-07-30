@@ -227,3 +227,170 @@ public class UserController {
 ```
 完成上述代码添加上，启动Spring Boot程序，访问：http://localhost:8080/swagger-ui.html
 。
+
+### Demo3 Spring Boot 与 JdbcTemplate
+
+本文介绍在Spring Boot基础下配置数据源和通过JdbcTemplate编写数据访问的示例。
+
+#### 数据源配置
+
+首先，为了连接数据库需要引入jdbc支持，在pom.xml中引入如下配置：
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-jdbc</artifactId>
+</dependency>
+
+```
+
+以MySQL数据库为例，先引入MySQL连接的依赖包，在pom.xml中加入：
+
+```xml
+
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>5.1.21</version>
+</dependency>
+
+```
+在src/main/resources/application.properties中配置数据源信息
+
+```sql
+###db
+spring.datasource.url=jdbc:mysql://localhost:3306/test
+spring.datasource.username=root
+spring.datasource.password=root
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+```
+
+#### 使用JdbcTemplate操作数据库
+
+Spring的JdbcTemplate是自动配置的，你可以直接使用@Autowired来注入到你自己的bean中来使用。
+
+举例：我们在创建User表，包含属性name、age，下面来编写数据访问对象和单元测试用例。
+
+定义包含有插入、删除、查询的抽象接口UserService
+
+```java
+package com.javademo.domain;
+
+/**
+ * @author maple
+ * @name 金色木叶枫
+ * @since Created time on 2017/7/30 下午5:30.
+ */
+public interface UserService {
+
+    /**
+     * 新增一个用户
+     * @param name
+     * @param age
+     */
+    void create(String name, Integer age);
+    /**
+     * 根据name删除一个用户高
+     * @param name
+     */
+    void deleteByName(String name);
+    /**
+     * 获取用户总量
+     */
+    Integer getAllUsers();
+    /**
+     * 删除所有用户
+     */
+    void deleteAllUsers();
+
+}
+
+```
+
+通过JdbcTemplate实现UserService中定义的数据访问操作
+
+```java
+package com.javademo.service;
+
+import com.javademo.domain.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
+
+/**
+ * @author maple
+ * @name 金色木叶枫
+ * @since Created time on 2017/7/30 下午5:31.
+ */
+@Service
+public class UserServiceImpl implements UserService {
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    @Override
+    public void create(String name, Integer age) {
+        jdbcTemplate.update("insert into USER(NAME, AGE) values(?, ?)", name, age);
+
+    }
+
+    @Override
+    public void deleteByName(String name) {
+        jdbcTemplate.update("delete from USER where NAME = ?", name);
+
+    }
+
+    @Override
+    public Integer getAllUsers() {
+        return jdbcTemplate.queryForObject("select count(1) from USER", Integer.class);
+
+    }
+
+    @Override
+    public void deleteAllUsers() {
+        jdbcTemplate.update("delete from USER");
+    }
+}
+
+```
+
+#### 测试用例是必须的
+
+```java
+
+package com.javademo.web;
+
+import com.javademo.domain.UserService;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+/**
+ * @author maple
+ * @name 金色木叶枫
+ * @since Created time on 2017/7/30 下午5:39.
+ */
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest
+public class JdbcTest {
+
+    @Autowired
+    private UserService userService;
+
+    @Test
+    public  void createTest(){
+
+        userService.create("hello",121);
+
+    }
+
+    @Test
+    public void getTest(){
+       Assert.assertEquals(1,userService.getAllUsers().intValue());
+    }
+}
+
+```
