@@ -5,10 +5,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.retry.annotation.EnableRetry;
 
 //@ComponentScan(basePackages = {"com.javademo.*"})
 @SpringBootApplication
 @EnableAutoConfiguration
+@EnableRetry
 public class JavademoApplication {
 
 	public static void main(String[] args) {
