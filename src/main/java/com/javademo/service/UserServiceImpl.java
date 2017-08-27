@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author maple
  * @name 金色木叶枫
@@ -48,5 +50,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findOne(int id) {
         return userMapper.findOne(id);
+    }
+
+    @Override
+    public List<User> selectList() {
+        return userMapper.selectList();
+    }
+
+    @Override
+    public int addUser(User user) {
+        return userMapper.addUser(user);
     }
 }

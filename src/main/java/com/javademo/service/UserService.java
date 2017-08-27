@@ -3,6 +3,8 @@ package com.javademo.service;
 
 import com.javademo.domain.User;
 
+import java.util.List;
+
 /**
  * @author maple
  * @name 金色木叶枫
@@ -37,5 +39,12 @@ public interface UserService {
      * @return
      */
     User findOne(int id);
+
+    /**
+     * 获取所有的用户信息
+     */
+    List<User> selectList();
+
+    int addUser(User user);
 
 }

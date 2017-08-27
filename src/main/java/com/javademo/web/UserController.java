@@ -5,6 +5,7 @@ import com.javademo.service.UserServiceImpl;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,18 +27,20 @@ public class UserController {
     @ApiOperation(value="获取用户列表", notes="")
     @RequestMapping(value = "/",method= RequestMethod.GET)
     public List<User> getUserList(){
-        List<User> list = new ArrayList<User>(users.values());
-        return list;
+        //List<User> list = new ArrayList<User>(users.values());
+        return userService.selectList();
+        //return list;
     }
 
     @ApiOperation(value="创建用户", notes="根据User对象创建用户")
     @ApiImplicitParam(name = "user", value = "用户详细实体user", required = true, dataType = "User")
     @RequestMapping(value="/", method=RequestMethod.POST)
-    public String postUser(@ModelAttribute User user) {
+    public int postUser(@ModelAttribute User user) {
         // 处理"/users/"的POST请求，用来创建User
         // 除了@ModelAttribute绑定参数之外，还可以通过@RequestParam从页面中传递参数
-        users.put(user.getId(), user);
-        return "success";
+        //users.put(user.getId(), user);
+       return userService.addUser(user);
+       // return "success";
     }
 
     @ApiOperation(value="获取用户详细信息", notes="根据url的id来获取用户详细信息")
