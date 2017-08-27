@@ -1,5 +1,6 @@
 package com.javademo.web;
 
+import com.javademo.common.error.MyException;
 import com.javademo.domain.User;
 import com.javademo.service.UserServiceImpl;
 import io.swagger.annotations.ApiImplicitParam;
