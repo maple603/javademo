@@ -17,6 +17,11 @@ public interface UserMapper {
     @Select(value="select *from user where id=#{id}")
     User findOne(int id);
 
+    //进行参数绑定
+    @Results({
+            @Result(property = "name", column = "name"),
+            @Result(property = "age", column = "age")
+    })
     @Select(value = "select * from user")
     List<User> selectList();
 
