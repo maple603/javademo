@@ -19,8 +19,8 @@ public interface UserMapper {
 
     //进行参数绑定
     @Results({
-            @Result(property = "name", column = "name"),
-            @Result(property = "age", column = "age")
+            @Result(property = "name", column = "name"),  //@Result中的property属性对应User对象中的成员名
+            @Result(property = "age", column = "age")    //column对应数据库中的字段名
     })
     @Select(value = "select * from user")
     List<User> selectList();
