@@ -1,10 +1,8 @@
 package com.javademo.mapper;
 
 import com.javademo.domain.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import javafx.scene.chart.ValueAxis;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -25,4 +23,7 @@ public interface UserMapper {
     @Insert(value = "INSERT INTO USER(NAME, AGE) VALUES(#{name}, #{age})")
     //int addUser(@Param("name") String name, @Param("age") Integer age);
     int addUser(User user);
+
+    @Update(value = "UPDATE USER SET age=#{age} where id=#{id}")
+    int updateUser(User user);
 }

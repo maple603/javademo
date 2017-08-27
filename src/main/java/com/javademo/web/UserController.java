@@ -60,13 +60,14 @@ public class UserController {
             @ApiImplicitParam(name = "user", value = "用户详细实体user", required = true, dataType = "User")
     })
     @RequestMapping(value="/{id}", method=RequestMethod.PUT)
-    public String putUser(@PathVariable Long id, @ModelAttribute User user) {
+    public int putUser(@PathVariable Long id, @ModelAttribute User user) {
         // 处理"/users/{id}"的PUT请求，用来更新User信息
-        User u = users.get(id);
-        u.setName(user.getName());
-        u.setAge(user.getAge());
-        users.put(id, u);
-        return "success";
+        //User u = users.get(id);
+        //u.setName(user.getName());
+        //u.setAge(user.getAge());
+        //users.put(id, u);
+        //return "success";
+        return userService.updateUser(user);
     }
 
     @ApiOperation(value="删除用户", notes="根据url的id来指定删除对象")

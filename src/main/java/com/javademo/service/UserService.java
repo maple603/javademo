@@ -47,4 +47,11 @@ public interface UserService {
 
     int addUser(User user);
 
+    /**
+     * 更新用户信息
+     * @param user
+     * @return
+     */
+    int updateUser(User user);
+
 }
