@@ -1,5 +1,7 @@
 package com.javademo.common;
 
+import lombok.Data;
+
 /**
  * @author maple
  * @name 金色木叶枫
@@ -20,7 +22,13 @@ public enum  ResultCode {
     ResultCode(int code , String msg){
         this.code = code;
         this.msg = msg;
-
     }
 
+    public int getCode() {
+        return code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
 }
